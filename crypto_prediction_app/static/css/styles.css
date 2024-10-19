@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+body.bg-image {
+    background-image: url('./1.png'); /* Update the path to your image */
+    background-size: cover; /* Cover the entire screen */
+    background-attachment: fixed; /* Fix the background image */
+    background-position: center; /* Center the image */
+    color: #151414; /* Change text color for better readability */
+    font-family: Arial, sans-serif; /* Use a readable font */
+}
+.container {
+    width: 95%;
+    margin: 100px auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust the last value for transparency (0.9 is slightly transparent) */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.info-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    text-align: left; /* Align text to the left for better readability */
+}
+
+.info-section h2 {
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result-container {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}

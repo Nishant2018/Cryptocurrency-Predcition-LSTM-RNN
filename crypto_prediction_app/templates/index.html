@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Crypto Price Prediction</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="static/script.js"></script>
+    <style>
+        /* Styles for the tab */
+        .tab {
+            background-color: #007bff; /* Tab background color */
+            color: white; /* Tab text color */
+            padding: 23px 20px; /* Padding for the tab */
+            text-align: center; /* Center the text */
+            font-size: 50px; /* Font size for the tab */
+            position: relative; /* Position relative for absolute children */
+            top: 0; /* No top offset */
+            left: 0; /* No left offset */
+            width: 100%; /* Full width */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            z-index: 10; /* Keep tab above the container */
+        }
+
+        /* Adjust the container's margin to move it up */
+        .container {
+            margin-top: 20px; /* Adjust this value to your preference */
+        }
+    </style>
+</head>
+<body class="bg-image"> <!-- Added class for background image -->
+    <div class="tab">💲 Welcome to the world of Bitcoin 💲</div> <!-- New Tab -->
+    <div class="container">
+        <h1>💰 Cryptocurrency Price Prediction 💰</h1>
+        <div class="info-section">
+            <h2>About This App</h2>
+            <p>This application uses machine learning models to predict cryptocurrency prices based on historical data.</p>
+            <p>With this app, you can:</p>
+            <ul>
+                <li>Get predictions for various cryptocurrencies like Bitcoin, Ethereum, and more.</li>
+                <li>View historical price data in an easy-to-read chart format.</li>
+                <li>Understand trends and make informed decisions.</li>
+                <li>Receive alerts for significant price changes.</li>
+                <li>Access a news feed to stay updated with the latest cryptocurrency developments.</li>
+            </ul>
+        </div>
+
+        <div class="section info-section">
+            <h2>How It Works</h2>
+            <p>When you select a cryptocurrency from the dropdown menu and click on "Predict Price," the app sends your request to the server, which processes the request using a machine learning model trained on historical price data.</p>
+            <p>The model predicts the future price based on the selected cryptocurrency's past trends, and the app displays the predicted price along with a chart of historical prices.</p>
+            <p>Additionally, the app incorporates user feedback to improve its prediction algorithms continuously.</p>
+        </div>
+
+        <div class="section info-section">
+            <h2>Understanding Cryptocurrency</h2>
+            <p>Cryptocurrency is a digital or virtual currency that uses cryptography for security. It operates on decentralized networks based on blockchain technology, which is a distributed ledger enforced by a network of computers (nodes).</p>
+            <p>Some key features of cryptocurrencies include:</p>
+            <ul>
+                <li><strong>Decentralization:</strong> Unlike traditional currencies, cryptocurrencies are not controlled by any central authority, making them immune to government interference or manipulation.</li>
+                <li><strong>Anonymity:</strong> Transactions can be made semi-anonymously, providing a layer of privacy for users.</li>
+                <li><strong>Security:</strong> Cryptographic techniques ensure that transactions are secure and that the system is resistant to fraud.</li>
+                <li><strong>Transparency:</strong> The use of blockchain technology allows all transactions to be visible and traceable, promoting transparency.</li>
+            </ul>
+        </div>
+        
+        <div class="info-section">
+            <h2>Technologies Used</h2>
+            <ul>
+                <li><strong>Machine Learning:</strong> The app uses machine learning algorithms to analyze historical data and predict future prices.</li>
+                <li><strong>Flask:</strong> A Python web framework that serves the application and handles requests and responses.</li>
+                <li><strong>Chart.js:</strong> A JavaScript library used to create responsive and interactive charts to visualize historical price data.</li>
+                <li><strong>HTML/CSS:</strong> For structuring and styling the web application.</li>
+            </ul>
+        </div>
+        <div class="section info-section">
+            <h2>How to Use This App</h2>
+            <p>Follow these simple steps to get started with cryptocurrency price prediction:</p>
+            <ol>
+                <li>Select a cryptocurrency from the dropdown menu.</li>
+                <li>Click the "Predict Price" button.</li>
+                <li>View the predicted price displayed below.</li>
+                <li>Check the historical chart for past price trends.</li>
+                <li>Provide feedback to help improve our predictions.</li>
+            </ol>
+        </div>
+
+        <form id="prediction-form">
+            <label for="ticker">Select Ticker Symbol:</label>
+            <select id="ticker" name="ticker" required>
+                <option value="">-- Select a Cryptocurrency --</option>
+                <option value="BTC-USD">Bitcoin (BTC) - The first and most well-known cryptocurrency, created in 2009. It operates on a decentralized network using blockchain technology.</option>
+                <option value="ETH-USD">Ethereum (ETH) - A decentralized platform that enables developers to create smart contracts and decentralized applications (DApps) using its native cryptocurrency, Ether.</option>
+                <option value="LTC-USD">Litecoin (LTC) - Created in 2011, Litecoin is a peer-to-peer cryptocurrency that aims to enable fast and low-cost transactions, often referred to as the "silver" to Bitcoin's "gold."</option>
+                <option value="XRP-USD">Ripple (XRP) - A digital payment protocol that enables fast and low-cost international money transfers, using its native cryptocurrency XRP.</option>
+                <option value="ADA-USD">Cardano (ADA) - A blockchain platform for smart contracts and DApps that uses a research-driven approach and is known for its emphasis on security and sustainability.</option>
+                <option value="DOGE-USD">Dogecoin (DOGE) - Originally created as a meme in 2013, Dogecoin has gained popularity for its community and charitable initiatives, becoming a widely used tipping currency online.</option>
+                <option value="BNB-USD">Binance Coin (BNB) - The native cryptocurrency of the Binance exchange, BNB can be used to pay for trading fees on the platform and has various other use cases within the Binance ecosystem.</option>
+                <option value="SOL-USD">Solana (SOL) - A high-performance blockchain platform designed for decentralized applications and crypto projects, known for its scalability and low transaction costs.</option>
+                <option value="DOT-USD">Polkadot (DOT) - A multi-chain platform that enables different blockchains to interoperate and share information, promoting a more connected and decentralized web.</option>
+            </select>
+            <button type="submit">Predict Price</button>
+        </form>
+        
+        <div id="result" class="result-container"></div>
+
+        <canvas id="historical-chart" width="400" height="200"></canvas>
+        <canvas id="prediction-chart" width="400" height="200"></canvas>
+
+        <div class="info-section">
+            <h2>User Testimonials</h2>
+            <blockquote>
+                <p>"This app has helped me make better investment decisions! The predictions are spot on!" - <strong>Alex T.</strong></p>
+            </blockquote>
+            <blockquote>
+                <p>"The historical charts are incredibly helpful for understanding trends!" - <strong>Maria S.</strong></p>
+            </blockquote>
+        </div>
+
+        <div class="info-section">
+            <h2>Demo Video</h2>
+            <video width="1440" height="600" controls>
+                <source src="../static/1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="section info-section">
+            <h2>Future Updates</h2>
+            <p>We're continuously working to improve our application. Upcoming features include:</p>
+            <ul>
+                <li>More cryptocurrencies available for prediction.</li>
+                <li>Integration with more data sources for real-time updates.</li>
+                <li>Enhanced machine learning models for improved accuracy.</li>
+                <li>Mobile app version for on-the-go predictions.</li>
+                <li>User profiles for personalized experience and saved predictions.</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            <h3>How accurate are the predictions?</h3>
+            <p>While our model uses advanced algorithms and historical data, no prediction is guaranteed. We recommend using this app as a tool to aid in your decision-making process.</p>
+            <h3>What data sources are used?</h3>
+            <p>We aggregate historical price data from various reliable cryptocurrency exchanges to ensure accuracy.</p>
+            <h3>Can I predict prices for any cryptocurrency?</h3>
+            <p>Currently, we support several major cryptocurrencies. More currencies may be added based on demand.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Crypto Price Prediction App | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let historicalChart;
+
+        document.getElementById('prediction-form').onsubmit = async (e) => {
+            e.preventDefault();
+
+            const ticker = document.getElementById('ticker').value;
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ ticker }),
+            });
+
+            const resultDiv = document.getElementById('result');
+            if (response.ok) {
+                const data = await response.json();
+                resultDiv.innerHTML = `Predicted Price: ${data.predicted_price}`;
+                await loadHistoricalData(ticker);
+            } else {
+                const errorData = await response.json();
+                resultDiv.innerHTML = `Error: ${errorData.error}`;
+            }
+        };
+
+        async function loadHistoricalData(ticker) {
+            const response = await fetch(`/historical/${ticker}`);
+            const data = await response.json();
+
+            const labels = data.dates;
+            const prices = data.prices;
+
+            if (historicalChart) {
+                historicalChart.destroy();
+            }
+
+            const historicalCtx = document.getElementById('historical-chart').getContext('2d');
+            historicalChart = new Chart(historicalCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Historical Prices',
+                        data: prices,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
